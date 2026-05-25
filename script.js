@@ -35,8 +35,9 @@ function checkPosition(position) {
 }
 
 function checkWinner(){
-  if (board[0][0] === board[0][1] && board[0][1] === board[0][2] && board[0][0] === 'O'){
-    
+  if (board[0][0] === 'O' && board[0][0] === board[0][1] && board[0][1] === board[0][2]){
+    console.log("You won!")
+    return true
   }
 }
 
@@ -50,6 +51,12 @@ while (true) {
     console.log('Please choose another position');
   } else {
     placeMarker(position);
+  }
+  if(!checkWinner()){
+    continue;
+  }else{
+    break;
+    console.log(board)
   }
   console.log(board)
 }
