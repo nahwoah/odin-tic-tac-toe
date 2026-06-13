@@ -4,35 +4,35 @@ const board = [
   ['', '', '']
 ];
 
-position = 0;
+const position = 0;
 
 console.log('Select position to mark');
 
 function findPosition(position) {
-  index = position - 1;
-  row = Math.floor(index / 3)
-  column = index % 3
+  const index = position - 1;
+  const row = Math.floor(index / 3)
+  const column = index % 3
   return board[row][column];
 }
 
 function placeMarker(position) {
-  index = position - 1;
-  row = Math.floor(index / 3)
-  column = index % 3
+  const index = position - 1;
+  const row = Math.floor(index / 3)
+  const column = index % 3
   board[row][column] = 'O';
 }
 
 function placeCPUMarker(position){
-  index = position - 1;
-  row = Math.floor(index / 3)
-  column = index % 3
+  const index = position - 1;
+  const row = Math.floor(index / 3)
+  const column = index % 3
   board[row][column] = 'X';
 }
 
 function checkPosition(position) {
-  index = position - 1;
-  row = Math.floor(index / 3)
-  column = index % 3
+  const index = position - 1;
+  const row = Math.floor(index / 3)
+  const column = index % 3
 
   if (board[row][column] !== '') {
     return false;
@@ -97,11 +97,13 @@ function checkCPUWin(){
   }
 }
 
-function cpuMove(){
-  if ((findPosition(1) === 'X' || findPosition(1) === 'O') && (findPosition(1) === findPosition(2) && checkPosition(3) === true)){
-    placeCPUMarker(3);
-  } else if((findPosition(1) === 'X' || findPosition(1) === 'O') && ())
-}
+// function cpuMove(){
+//   if ((findPosition(1) === 'X' || findPosition(1) === 'O') && (findPosition(1) === findPosition(2) && checkPosition(3) === true)){
+//     placeCPUMarker(3);
+//   } else if((findPosition(1) === 'X' || findPosition(1) === 'O') && ()){
+    
+//   }
+// }
 
 // index = position - 1;
 // row = Math.floor(index / 3)
