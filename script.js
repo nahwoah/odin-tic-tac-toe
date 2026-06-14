@@ -1,12 +1,30 @@
-const board = [
-  ['', '', ''],
-  ['', '', ''],
-  ['', '', '']
-];
+const tictactoe = (() => {
 
-const position = 0;
+  const board = [
+    ['', '', ''],
+    ['', '', ''],
+    ['', '', '']
+  ];
 
-console.log('Select position to mark');
+  let position = 0;
+  const getPosition = () => position;
+  const givePosition = () => {  }
+  
+
+  return { board, position };
+
+})();
+
+function createPlayer(name) {
+
+  const name = name;
+
+  let score = 0;
+  const getScore = () => score;
+  const giveScore = () => { score++; };
+
+  return { name, getScore, giveScore };
+}
 
 function findPosition(position) {
   const index = position - 1;
@@ -15,14 +33,14 @@ function findPosition(position) {
   return board[row][column];
 }
 
-function placeMarker(position) {
+function placeP1Marker(position) {
   const index = position - 1;
   const row = Math.floor(index / 3)
   const column = index % 3
   board[row][column] = 'O';
 }
 
-function placeCPUMarker(position){
+function placeP2Marker(position) {
   const index = position - 1;
   const row = Math.floor(index / 3)
   const column = index % 3
@@ -34,14 +52,14 @@ function checkPosition(position) {
   const row = Math.floor(index / 3)
   const column = index % 3
 
-  if (board[row][column] !== '') {
+  if (tictactoe.board[row][column] !== '') {
     return false;
   } else {
     return true;
   }
 }
 
-function checkPlayerWin() {
+function checkPlayer1Win() {
   if (board[0][0] === 'O' && board[0][0] === board[0][1] && board[0][1] === board[0][2]) {  // check first row
     console.log("You won!");
     return true;
@@ -69,7 +87,7 @@ function checkPlayerWin() {
   }
 }
 
-function checkCPUWin(){
+function checkPlayer2Win() {
   if (board[0][0] === 'X' && board[0][0] === board[0][1] && board[0][1] === board[0][2]) {  // check first row
     console.log("The CPU won!");
     return true;
@@ -101,7 +119,7 @@ function checkCPUWin(){
 //   if ((findPosition(1) === 'X' || findPosition(1) === 'O') && (findPosition(1) === findPosition(2) && checkPosition(3) === true)){
 //     placeCPUMarker(3);
 //   } else if((findPosition(1) === 'X' || findPosition(1) === 'O') && ()){
-    
+
 //   }
 // }
 
@@ -114,13 +132,19 @@ while (true) {
   if (position < 1 || position > 9 || !checkPosition(position)) {
     console.log('Please choose another position');
   } else {
-    placeMarker(position);
+    placeP1Marker(position);
   }
-  if (!checkPlayerWin()) {
-    continue;
-  } else {
+  if (checkPlayer1Win()) {
+    break;
+    console.log(board);
+  } else if (checkPlayer2Win){
     break;
     console.log(board);
   }
   console.log(board)
+}
+
+
+function playRound(){
+
 }
