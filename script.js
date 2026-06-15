@@ -8,7 +8,7 @@ const tictactoe = (() => {
 
   let position = 0;
   const getPosition = () => position;
-  const givePosition = () => {  }
+  const givePosition = () => {  };
   
 
   return { board, position };
@@ -30,21 +30,21 @@ function findPosition(position) {
   const index = position - 1;
   const row = Math.floor(index / 3)
   const column = index % 3
-  return board[row][column];
+  return tictactoe.board[row][column];
 }
 
 function placeP1Marker(position) {
   const index = position - 1;
   const row = Math.floor(index / 3)
   const column = index % 3
-  board[row][column] = 'O';
+  tictactoe.board[row][column] = 'O';
 }
 
 function placeP2Marker(position) {
   const index = position - 1;
   const row = Math.floor(index / 3)
   const column = index % 3
-  board[row][column] = 'X';
+  tictactoe.board[row][column] = 'X';
 }
 
 function checkPosition(position) {
