@@ -1,4 +1,4 @@
-const btn = document.querySelectorAll("#button");
+const btn = document.querySelectorAll("button");
 
 const tictactoe = (() => {
 
@@ -7,12 +7,7 @@ const tictactoe = (() => {
     ['', '', ''],
     ['', '', '']
   ];
-
-  // let position = 0;
-  // const getPosition = () => position;
-  // const givePosition = () => {  };
   
-
   return { board };
 
 })();
@@ -119,14 +114,6 @@ function checkPlayer2Win() {
   }
 }
 
-// function cpuMove(){
-//   if ((findPosition(1) === 'X' || findPosition(1) === 'O') && (findPosition(1) === findPosition(2) && checkPosition(3) === true)){
-//     placeCPUMarker(3);
-//   } else if((findPosition(1) === 'X' || findPosition(1) === 'O') && ()){
-
-//   }
-// }
-
 // index = position - 1;
 // row = Math.floor(index / 3)
 // column = index % 3
@@ -149,14 +136,13 @@ function checkPlayer2Win() {
 // }
 
 
-function playRound(){
 
-}
 
-let clickEvent =  (event) => {
+let p1 =  (event) => {
   let currentlyClickedButton = event.target;
   
   position = parseInt(currentlyClickedButton.getAttribute('data-position'));
+  console.log(position)
   placeP1Marker(position);
   checkPlayer1Win();
 
@@ -165,5 +151,39 @@ let clickEvent =  (event) => {
   currentlyClickedButton.innerHTML = 'X'
 };
 
+let p2 =  (event) => {
+  let currentlyClickedButton = event.target;
+  
+  position = parseInt(currentlyClickedButton.getAttribute('data-position'));
+  console.log(position)
+  placeP2Marker(position);
+  checkPlayer2Win();
+
+  // currentlyClickedButton.textContent = "Clicked!";
+  // we use toFixed because we only want two digit.
+  currentlyClickedButton.innerHTML = 'O'
+};
+
+function playRound(){
+    for (i = 0; i < 2; i++){
+      if (i === 0){
+        btn.forEach(button => button.onclick = p1);
+      }else{
+        btn.forEach(button => button.onclick = p2);
+      }
+    }
+    
+  
+
+
+  
+    
+  
+}
+
+
+playRound()
+
+
 // we add the listener onclick to every buttons.
-document.querySelectorAll('button').forEach(button => button.onclick = clickEvent);
+// document.querySelectorAll('button').forEach(button => button.onclick = clickEvent);
