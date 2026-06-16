@@ -1,4 +1,5 @@
 const btn = document.querySelectorAll("button");
+const reset = document.getElementById('reset');
 
 const tictactoe = (() => {
 
@@ -7,7 +8,7 @@ const tictactoe = (() => {
     ['', '', ''],
     ['', '', '']
   ];
-  
+
   return { board };
 
 })();
@@ -135,54 +136,72 @@ function checkPlayer2Win() {
 //   console.log(tictactoe.board)
 // }
 
+let player = 1;
 
 
-
-let p1 =  (event) => {
+let p1 = (event) => {
   let currentlyClickedButton = event.target;
-  
+
   position = parseInt(currentlyClickedButton.getAttribute('data-position'));
   console.log(position)
   placeP1Marker(position);
   checkPlayer1Win();
-
+  player = 2
   // currentlyClickedButton.textContent = "Clicked!";
   // we use toFixed because we only want two digit.
   currentlyClickedButton.innerHTML = 'X'
 };
 
-let p2 =  (event) => {
+let p2 = (event) => {
   let currentlyClickedButton = event.target;
-  
+
   position = parseInt(currentlyClickedButton.getAttribute('data-position'));
   console.log(position)
   placeP2Marker(position);
   checkPlayer2Win();
-
+  player = 1
   // currentlyClickedButton.textContent = "Clicked!";
   // we use toFixed because we only want two digit.
   currentlyClickedButton.innerHTML = 'O'
+
 };
 
-function playRound(){
-    for (i = 0; i < 2; i++){
-      if (i === 0){
-        btn.forEach(button => button.onclick = p1);
-      }else{
-        btn.forEach(button => button.onclick = p2);
-      }
-    }
-    
-  
 
 
-  
-    
-  
+function choosePlayer() {
+  if (player === 1) {
+    console.log(player)
+    return p1
+  } else {
+    console.log(player)
+    return p2
+  }
 }
 
+function playRound() {
+  
+  // btn.forEach(button => button.onclick = choosePlayer())
+  document.querySelectorAll('button').forEach(button => {
+    button.addEventListener("click", choosePlayer());
+  });
+
+
+
+
+
+
+
+
+}
+
+function resetBoard(){
+  tictactoe.board.forEach(element => element = '')
+}
 
 playRound()
+reset.addEventListener("click", resetBoard)
+
+
 
 
 // we add the listener onclick to every buttons.
