@@ -143,13 +143,22 @@ let p1 = (event) => {
   let currentlyClickedButton = event.target;
 
   position = parseInt(currentlyClickedButton.getAttribute('data-position'));
-  console.log(position)
-  placeP1Marker(position);
-  checkPlayer1Win();
-  player = 2
-  // currentlyClickedButton.textContent = "Clicked!";
-  // we use toFixed because we only want two digit.
-  currentlyClickedButton.innerHTML = 'X'
+
+  if (player === 1) {
+    console.log(player)
+    placeP1Marker(position);
+    checkPlayer1Win();
+    currentlyClickedButton.innerHTML = 'X'
+    player = 2
+
+  } else {
+    console.log(player)
+    placeP2Marker(position);
+    checkPlayer2Win();
+    currentlyClickedButton.innerHTML = 'O'
+    player = 1
+    
+  }
 };
 
 let p2 = (event) => {
@@ -159,48 +168,30 @@ let p2 = (event) => {
   console.log(position)
   placeP2Marker(position);
   checkPlayer2Win();
-  player = 1
-  // currentlyClickedButton.textContent = "Clicked!";
-  // we use toFixed because we only want two digit.
   currentlyClickedButton.innerHTML = 'O'
 
 };
 
 
-
-function choosePlayer() {
-  if (player === 1) {
-    console.log(player)
-    return p1
-  } else {
-    console.log(player)
-    return p2
-  }
-}
-
 function playRound() {
-  
+
   // btn.forEach(button => button.onclick = choosePlayer())
-  document.querySelectorAll('button').forEach(button => {
-    button.addEventListener("click", choosePlayer());
-  });
+  // document.querySelectorAll('.btn').forEach(button => {
+  //   button.addEventListener("click", p1);
+  // });
 
-
-
-
-
-
-
+  document.querySelector('.btn').addEventListener("click", p1);
 
 }
 
-function resetBoard(){
+function resetBoard() {
   tictactoe.board.forEach(element => element = '')
 }
 
-playRound()
+// playRound()
 reset.addEventListener("click", resetBoard)
 
+document.querySelectorAll('.btn').forEach(button => button.addEventListener("click", p1));
 
 
 
