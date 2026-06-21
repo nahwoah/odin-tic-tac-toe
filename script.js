@@ -1,5 +1,6 @@
 const btn = document.querySelectorAll("button");
 const reset = document.getElementById('reset');
+const winner = document.querySelector('.winner');
 
 const tictactoe = (() => {
 
@@ -14,8 +15,6 @@ const tictactoe = (() => {
 })();
 
 let position = 0;
-
-console.log(tictactoe.board);
 
 function createPlayer(name) {
 
@@ -61,56 +60,56 @@ function checkPosition(position) {
 
 function checkPlayer1Win() {
   if (tictactoe.board[0][0] === 'X' && tictactoe.board[0][0] === tictactoe.board[0][1] && tictactoe.board[0][1] === tictactoe.board[0][2]) {  // check first row
-    console.log("Player1 wins!");
+    winner.innerHTML = 'Player 1 Wins!'
     return true;
   } else if (tictactoe.board[1][0] === 'X' && tictactoe.board[1][0] === tictactoe.board[1][1] && tictactoe.board[1][1] === tictactoe.board[1][2]) { // check second row
-    console.log("Player1 wins!");
+    winner.innerHTML = 'Player 1 Wins!'
     return true;
   } else if (tictactoe.board[2][0] === 'X' && tictactoe.board[2][0] === tictactoe.board[2][1] && tictactoe.board[2][1] === tictactoe.board[2][2]) { // check third row
-    console.log("Player1 wins!");
+    winner.innerHTML = 'Player 1 Wins!'
     return true;
   } else if (tictactoe.board[0][0] === 'X' && tictactoe.board[0][0] === tictactoe.board[1][0] && tictactoe.board[1][0] === tictactoe.board[2][0]) { // check first column
-    console.log("Player1 wins!");
+    winner.innerHTML = 'Player 1 Wins!'
     return true;
-  } else if (tictactoe.board[0][1] === 'X' && tictactoe.board[0][1] === tictactoe.board[1][1] && tictactoe.board[1][1] === tictactoe.board[1][2]) { // check second column
-    console.log("Player1 wins!");
+  } else if (tictactoe.board[0][1] === 'X' && tictactoe.board[0][1] === tictactoe.board[1][1] && tictactoe.board[1][1] === tictactoe.board[2][1]) { // check second column
+    winner.innerHTML = 'Player 1 Wins!'
     return true;
   } else if (tictactoe.board[0][2] === 'X' && tictactoe.board[0][2] === tictactoe.board[1][2] && tictactoe.board[1][2] === tictactoe.board[2][2]) { // check third column
-    console.log("Player1 wins!");
+    winner.innerHTML = 'Player 1 Wins!'
     return true;
   } else if (tictactoe.board[0][0] === 'X' && tictactoe.board[0][0] === tictactoe.board[1][1] && tictactoe.board[1][1] === tictactoe.board[2][2]) { // check left to right diagonal
-    console.log("Player1 wins!");
+    winner.innerHTML = 'Player 1 Wins!'
     return true;
   } else if (tictactoe.board[0][2] === 'X' && tictactoe.board[0][2] === tictactoe.board[1][1] && tictactoe.board[1][1] === tictactoe.board[2][0]) { // check right to left diagonal
-    console.log("Player1 wins!");
+    winner.innerHTML = 'Player 1 Wins!'
     return true;
   }
 }
 
 function checkPlayer2Win() {
   if (tictactoe.board[0][0] === 'O' && tictactoe.board[0][0] === tictactoe.board[0][1] && tictactoe.board[0][1] === tictactoe.board[0][2]) {  // check first row
-    console.log("Player2 wins!");
+    winner.innerHTML = 'Player 2 Wins!'
     return true;
   } else if (tictactoe.board[1][0] === 'O' && tictactoe.board[1][0] === tictactoe.board[1][1] && tictactoe.board[1][1] === tictactoe.board[1][2]) { // check second row
-    console.log("Player2 wins!");
+    winner.innerHTML = 'Player 2 Wins!'
     return true;
   } else if (tictactoe.board[2][0] === 'O' && tictactoe.board[2][0] === tictactoe.board[2][1] && tictactoe.board[2][1] === tictactoe.board[2][2]) { // check third row
-    console.log("Player2 wins!");
+    winner.innerHTML = 'Player 2 Wins!'
     return true;
   } else if (tictactoe.board[0][0] === 'O' && tictactoe.board[0][0] === tictactoe.board[1][0] && tictactoe.board[1][0] === tictactoe.board[2][0]) { // check first column
-    console.log("Player2 wins!");
+    winner.innerHTML = 'Player 2 Wins!'
     return true;
-  } else if (tictactoe.board[0][1] === 'O' && tictactoe.board[0][1] === tictactoe.board[1][1] && tictactoe.board[1][1] === tictactoe.board[1][2]) { // check second column
-    console.log("Player2 wins!");
+  } else if (tictactoe.board[0][1] === 'O' && tictactoe.board[0][1] === tictactoe.board[1][1] && tictactoe.board[1][1] === tictactoe.board[2][1]) { // check second column
+    winner.innerHTML = 'Player 2 Wins!'
     return true;
   } else if (tictactoe.board[0][2] === 'O' && tictactoe.board[0][2] === tictactoe.board[1][2] && tictactoe.board[1][2] === tictactoe.board[2][2]) { // check third column
-    console.log("Player2 wins!");
+    winner.innerHTML = 'Player 2 Wins!'
     return true;
   } else if (tictactoe.board[0][0] === 'O' && tictactoe.board[0][0] === tictactoe.board[1][1] && tictactoe.board[1][1] === tictactoe.board[2][2]) { // check left to right diagonal
-    console.log("Player2 wins!");
+    winner.innerHTML = 'Player 2 Wins!'
     return true;
   } else if (tictactoe.board[0][2] === 'O' && tictactoe.board[0][2] === tictactoe.board[1][1] && tictactoe.board[1][1] === tictactoe.board[2][0]) { // check right to left diagonal
-    console.log("Player2 wins!");
+    winner.innerHTML = 'Player 2 Wins!'
     return true;
   }
 }
@@ -138,6 +137,12 @@ function checkPlayer2Win() {
 
 let player = 1;
 
+const player1 = createPlayer(prompt("Enter name for player 1"));
+const player2 = createPlayer(prompt("Enter name for player 2"));
+
+console.log(player1.name);
+console.log(player2.name);
+
 
 let p1 = (event) => {
   let currentlyClickedButton = event.target;
@@ -161,39 +166,22 @@ let p1 = (event) => {
   }
 };
 
-let p2 = (event) => {
-  let currentlyClickedButton = event.target;
-
-  position = parseInt(currentlyClickedButton.getAttribute('data-position'));
-  console.log(position)
-  placeP2Marker(position);
-  checkPlayer2Win();
-  currentlyClickedButton.innerHTML = 'O'
-
-};
-
 
 function playRound() {
-
-  // btn.forEach(button => button.onclick = choosePlayer())
-  // document.querySelectorAll('.btn').forEach(button => {
-  //   button.addEventListener("click", p1);
-  // });
 
   document.querySelector('.btn').addEventListener("click", p1);
 
 }
 
-function resetBoard() {
-  tictactoe.board.forEach(element => element = '')
+const resetB = function resetBoard() {
+  tictactoe.board = tictactoe.board.map(item => item = ['', '', '']);
+  document.querySelectorAll('.btn').forEach(button => button.innerHTML = '');
+  
+  player = 1;
+  winner.innerHTML = ''
 }
 
 // playRound()
-reset.addEventListener("click", resetBoard)
+reset.addEventListener("click", resetB);
 
 document.querySelectorAll('.btn').forEach(button => button.addEventListener("click", p1));
-
-
-
-// we add the listener onclick to every buttons.
-// document.querySelectorAll('button').forEach(button => button.onclick = clickEvent);
