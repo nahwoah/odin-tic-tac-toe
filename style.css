@@ -6,7 +6,8 @@ body {
     display: grid;
     align-items: center;
     box-sizing: border-box;
-    grid-template-rows: 0.25fr 1fr 1fr;
+    grid-template-rows: 0.25fr 1fr 0.35fr 0.15fr 0.5fr;
+    grid-template-columns: 1fr 1fr;
 }
 
 /* container {
@@ -14,8 +15,8 @@ body {
     align-items: center;
 } */
 
-.container {
-    
+.container{
+    grid-column: 1/3;
 }
 
 .row1,
@@ -38,11 +39,44 @@ body {
     font-family: 'Courier New', Courier, monospace;
     font-size: 50px;
     color: bisque;
+    grid-column: 1/3;
+}
+
+.p1score{
+    grid-column: 1/2;
+}
+
+.p2score{
+    grid-column: 2/3;
+}
+
+.p1score, .p2score{
+    align-items: center;
+    justify-self: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 50px;
+    color: antiquewhite;
+}
+
+form{
+    align-items: center;
+    justify-self: center;
+    grid-column: 1/3;
+}
+
+input{
+    height: 5vh;
+    width: 30vh;
+}
+
+#formSubmit{
+    height: 5.9vh;
+    width: 15vw;
 }
 
 
-
 #reset {
+    grid-column: 1/3;
     display: grid;
     height: 100px;
     width: 150px;

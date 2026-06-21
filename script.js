@@ -1,6 +1,17 @@
-const btn = document.querySelectorAll("button");
+const container = document.querySelector('.container');
+container.style.visibility = 'hidden';
+
+const btn = document.querySelectorAll('button');
 const reset = document.getElementById('reset');
+reset.style.visibility = 'hidden';
+
 const winner = document.querySelector('.winner');
+const form = document.querySelector('form');
+const playerName = document.querySelector("#playerName");
+const p1score = document.querySelector(".p1score");
+const p2score = document.querySelector(".p2score");
+
+
 
 const tictactoe = (() => {
 
@@ -60,88 +71,79 @@ function checkPosition(position) {
 
 function checkPlayer1Win() {
   if (tictactoe.board[0][0] === 'X' && tictactoe.board[0][0] === tictactoe.board[0][1] && tictactoe.board[0][1] === tictactoe.board[0][2]) {  // check first row
-    winner.innerHTML = 'Player 1 Wins!'
     return true;
   } else if (tictactoe.board[1][0] === 'X' && tictactoe.board[1][0] === tictactoe.board[1][1] && tictactoe.board[1][1] === tictactoe.board[1][2]) { // check second row
-    winner.innerHTML = 'Player 1 Wins!'
     return true;
   } else if (tictactoe.board[2][0] === 'X' && tictactoe.board[2][0] === tictactoe.board[2][1] && tictactoe.board[2][1] === tictactoe.board[2][2]) { // check third row
-    winner.innerHTML = 'Player 1 Wins!'
     return true;
   } else if (tictactoe.board[0][0] === 'X' && tictactoe.board[0][0] === tictactoe.board[1][0] && tictactoe.board[1][0] === tictactoe.board[2][0]) { // check first column
-    winner.innerHTML = 'Player 1 Wins!'
     return true;
   } else if (tictactoe.board[0][1] === 'X' && tictactoe.board[0][1] === tictactoe.board[1][1] && tictactoe.board[1][1] === tictactoe.board[2][1]) { // check second column
-    winner.innerHTML = 'Player 1 Wins!'
     return true;
   } else if (tictactoe.board[0][2] === 'X' && tictactoe.board[0][2] === tictactoe.board[1][2] && tictactoe.board[1][2] === tictactoe.board[2][2]) { // check third column
-    winner.innerHTML = 'Player 1 Wins!'
     return true;
   } else if (tictactoe.board[0][0] === 'X' && tictactoe.board[0][0] === tictactoe.board[1][1] && tictactoe.board[1][1] === tictactoe.board[2][2]) { // check left to right diagonal
-    winner.innerHTML = 'Player 1 Wins!'
     return true;
   } else if (tictactoe.board[0][2] === 'X' && tictactoe.board[0][2] === tictactoe.board[1][1] && tictactoe.board[1][1] === tictactoe.board[2][0]) { // check right to left diagonal
-    winner.innerHTML = 'Player 1 Wins!'
     return true;
   }
 }
 
 function checkPlayer2Win() {
   if (tictactoe.board[0][0] === 'O' && tictactoe.board[0][0] === tictactoe.board[0][1] && tictactoe.board[0][1] === tictactoe.board[0][2]) {  // check first row
-    winner.innerHTML = 'Player 2 Wins!'
     return true;
   } else if (tictactoe.board[1][0] === 'O' && tictactoe.board[1][0] === tictactoe.board[1][1] && tictactoe.board[1][1] === tictactoe.board[1][2]) { // check second row
-    winner.innerHTML = 'Player 2 Wins!'
     return true;
   } else if (tictactoe.board[2][0] === 'O' && tictactoe.board[2][0] === tictactoe.board[2][1] && tictactoe.board[2][1] === tictactoe.board[2][2]) { // check third row
-    winner.innerHTML = 'Player 2 Wins!'
     return true;
   } else if (tictactoe.board[0][0] === 'O' && tictactoe.board[0][0] === tictactoe.board[1][0] && tictactoe.board[1][0] === tictactoe.board[2][0]) { // check first column
-    winner.innerHTML = 'Player 2 Wins!'
     return true;
   } else if (tictactoe.board[0][1] === 'O' && tictactoe.board[0][1] === tictactoe.board[1][1] && tictactoe.board[1][1] === tictactoe.board[2][1]) { // check second column
-    winner.innerHTML = 'Player 2 Wins!'
     return true;
   } else if (tictactoe.board[0][2] === 'O' && tictactoe.board[0][2] === tictactoe.board[1][2] && tictactoe.board[1][2] === tictactoe.board[2][2]) { // check third column
-    winner.innerHTML = 'Player 2 Wins!'
     return true;
   } else if (tictactoe.board[0][0] === 'O' && tictactoe.board[0][0] === tictactoe.board[1][1] && tictactoe.board[1][1] === tictactoe.board[2][2]) { // check left to right diagonal
-    winner.innerHTML = 'Player 2 Wins!'
     return true;
   } else if (tictactoe.board[0][2] === 'O' && tictactoe.board[0][2] === tictactoe.board[1][1] && tictactoe.board[1][1] === tictactoe.board[2][0]) { // check right to left diagonal
-    winner.innerHTML = 'Player 2 Wins!'
     return true;
   }
 }
 
-// index = position - 1;
-// row = Math.floor(index / 3)
-// column = index % 3
-
-// while (true) {
-//   position = Number(prompt("Select position 1-9:"));
-//   if (position < 1 || position > 9 || !checkPosition(position)) {
-//     console.log('Please choose another position');
-//   } else {
-//     placeP1Marker(position);
-//   }
-//   if (checkPlayer1Win()) {
-//     break;
-//     console.log(tictactoe.board);
-//   } else if (checkPlayer2Win){
-//     break;
-//     console.log(tictactoe.board);
-//   }
-//   console.log(tictactoe.board)
-// }
-
+// add an object to control game flow, keep turns and do checks for players
 let player = 1;
 
-const player1 = createPlayer(prompt("Enter name for player 1"));
-const player2 = createPlayer(prompt("Enter name for player 2"));
+// const player1 = createPlayer(prompt("Enter name for player 1"));
+// const player2 = createPlayer(prompt("Enter name for player 2"));
 
-console.log(player1.name);
-console.log(player2.name);
+// console.log(player1.name);
+// console.log(player2.name);
+
+let declared = 0;
+let player1;
+let player2
+
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  
+  if (declared === 0) {
+    player1 = createPlayer(playerName.value);
+    console.log(player1.name);
+    playerName.value = ''
+    playerName.placeholder = "Enter name for player 2";
+    playerName.focus();
+    declared = 1;
+  } else {
+    player2 = createPlayer(playerName.value);
+    form.style.visibility = "hidden";
+    container.style.visibility = "visible";
+    reset.style.visibility = 'visible';
+    console.log(player2.name);
+    p1score.innerHTML = `${player1.name}: ${player1.getScore()}`
+    p2score.innerHTML = `${player2.name}: ${player2.getScore()}`
+  }
+})
+
 
 
 let p1 = (event) => {
@@ -150,33 +152,44 @@ let p1 = (event) => {
   position = parseInt(currentlyClickedButton.getAttribute('data-position'));
 
   if (player === 1) {
-    console.log(player)
-    placeP1Marker(position);
-    checkPlayer1Win();
-    currentlyClickedButton.innerHTML = 'X'
-    player = 2
+    
+    if (checkPosition(position) === true) {
+      placeP1Marker(position);
+      currentlyClickedButton.innerHTML = 'X'
+      player = 2
+      if (checkPlayer1Win()){
+        winner.innerHTML = `${player1.name} Wins!`
+        player1.giveScore();
+        p1score.innerHTML = `${player1.name}: ${player1.getScore()}`
+      }
+    }
 
   } else {
-    console.log(player)
-    placeP2Marker(position);
-    checkPlayer2Win();
-    currentlyClickedButton.innerHTML = 'O'
-    player = 1
     
+    if (checkPosition(position) === true) {
+      placeP2Marker(position);
+      currentlyClickedButton.innerHTML = 'O'
+      player = 1
+      if (checkPlayer2Win()){
+        winner.innerHTML = `${player2.name} Wins!`
+        player2.giveScore();
+        p2score.innerHTML = `${player2.name}: ${player2.getScore()}`
+      }
+    }
   }
 };
 
 
 function playRound() {
 
-  document.querySelector('.btn').addEventListener("click", p1);
+  document.querySelectorAll('.btn').forEach(button => button.addEventListener("click", p1));
 
 }
 
 const resetB = function resetBoard() {
   tictactoe.board = tictactoe.board.map(item => item = ['', '', '']);
   document.querySelectorAll('.btn').forEach(button => button.innerHTML = '');
-  
+
   player = 1;
   winner.innerHTML = ''
 }
